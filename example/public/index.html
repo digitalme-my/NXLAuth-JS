@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js"></script>
+    <script src="https://cdn.identity.nexlife.com.my/js/1.1.0/nxlauth.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var nxlauth = new App({
+                openIdConnectUrl: 'http://localhost:9000',
+                clientId: 'edd7505c-7f72-491a-ac5c-5bebf1c8c1c2',
+                redirectUri: 'http://localhost:3000/redirect',
+                scope: 'openid offline',
+            });
+            nxlauth.checkAuth(callback);
+
+            $("#login").click(function () {
+                nxlauth.login();
+            });
+
+            $("#gettoken").click(function (e) {
+                nxlauth.getToken(callback);
+            });
+
+            $("#userinfo").click(function (e) {
+                var token = $('#access_token').val();
+                nxlauth.getUserInfo(token, display);
+            });
+
+            // -- coming soon
+            // $("#profile").click(function (e) {
+            //     nxlauth.updateProfile(callback);
+            // });
+
+            //-- user custom function
+            function display(response) {
+                // print response
+                var json = JSON.stringify(response, null, '  ');
+                $('#display').prepend(json + "\n\n");
+            }
+            function callback(response) {
+                display(response);
+                // print latest access token
+                var accessToken = response.accessToken;
+                $('#access_token').val(accessToken);
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>NXLAuth-JS SDK Demo Web Application</h1>
+        <div class="mb-1">
+            <button class="btn btn-success" id="login">Login</button>
+            <button class="btn btn-primary" id="gettoken">Refresh Token</button>
+            <button class="btn btn-primary" id="userinfo">Userinfo</button>
+            <!-- <button class="btn btn-primary" id="profile">User Profile</button> -->
+        </div>
+        <p>
+            <pre id="display"></pre>
+        </p>
+        <p>
+            Latest Access Token:
+            <input type="text" id="access_token" class="form-control">
+        </p>
+    </div>
+</body>
+
+</html>
