@@ -1,6 +1,6 @@
 ## Installation
 
-###1. Import jQuery and NXLAuth-JS libs
+### 1. Import jQuery and NXLAuth-JS libs
 This library requires jQuery to handle AJAX request to Auth provider
 ```
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
@@ -13,7 +13,7 @@ $(document).ready(function () {
 });
 ```
 
-###2. Initialize NXLAuth-JS application
+### 2. Initialize NXLAuth-JS application
 ```
 var nxlauth = new App({
     openIdConnectUrl: 'https://auth.sso.unifi.space',
@@ -24,17 +24,17 @@ var nxlauth = new App({
 nxlauth.checkAuth(callback);
 ```
 
-###3. Login
+### 3. Login
 ```
 nxlauth.login();
 ```
 
-###4. Get / Refresh Token
+### 4. Get / Refresh Token
 ```
 nxlauth.getToken(callback);
 ```
 
-###5. Get Userinfo
+### 5. Get Userinfo
 ```
 nxlauth.getUserInfo(accessToken, callback);
 ```
@@ -66,18 +66,18 @@ Sample body of response as below:
 ## Demo application
 Demo application is a nodejs application built with express framework
 
-###1. Installation
+### 1. Installation
 ```
 $ cd example
 $ npm install express --save
 ```
 
-###2. Running nodejs server
+### 2. Running nodejs server
 ```
 $ node server.js
 ```
 
-###3. Run test on browser
+### 3. Run test on browser
 ```
 http://localhost:3000
 ```
