@@ -4,7 +4,7 @@
 This library requires jQuery to handle AJAX request to Auth provider
 ```
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-<script src="https://cdn.identity.nexlife.com.my/js/1.1.0/nxlauth.min.js"></script>
+<script src="https://cdn.digitalme.my/js/1.1.0/nxlauth.min.js"></script>
 ```
 
 ```
@@ -16,7 +16,7 @@ $(document).ready(function () {
 ### 2. Initialize NXLAuth-JS application
 ```
 var nxlauth = new App({
-    openIdConnectUrl: 'https://auth.sso.unifi.space',
+    openIdConnectUrl: 'https://auth.digitalme.my',
     clientId: '<client-id>',
     redirectUri: '<redirect-uri>',
     scope: 'openid offline',
